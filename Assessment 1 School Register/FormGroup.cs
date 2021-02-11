@@ -25,16 +25,18 @@ namespace Assessment_1_School_Register
         }
         public void TakeRegister(DateTime Date)
         {
+            Console.WriteLine("TAKING REGISTER");
             for (int i = 0; i < Students.Length; i += 1)
             {
                 if (Students[i] == null)
                 {
                     break;
                 }
-                Console.WriteLine("ENTER " + Students[i].GetName() + " " + " AttendanceStatus");
+                Console.WriteLine("{0,3} {1,5} {2,35}", "Student", Students[i].GetName(), "P - Present, A - Absent, L - Late");
                 string AttendanceStatus = Console.ReadLine();
                 Students[i].AddAttendance(Date,AttendanceStatus);
             }
+            Console.WriteLine("END OF REGISTER");
         }
         public void PrintRegister(DateTime Date)
         {
