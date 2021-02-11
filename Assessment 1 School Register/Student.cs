@@ -46,14 +46,14 @@ namespace Assessment_1_School_Register
                     return AttendanceDays[i].GetAttendanceStatus();
                 }
             }
-            return ("Attendance at Date" + Date + " Not Found");
+            return ("Attendance at Date " + Date + " Not Found");
         }
         public int GetTotalDays(string Status)
         {
             int Total = 0;
             for (int i = 0; i < AttendanceDays.Length; i += 1)
             {
-                if (AttendanceDays[i].GetAttendanceStatus() == null)
+                if (AttendanceDays[i] == null)
                 {
                     break;
                 }
@@ -76,6 +76,14 @@ namespace Assessment_1_School_Register
                 Total += AttendanceDays[i].GetMinutesLate();
             }
             return Total;
+        }
+        public string GetName()
+        {
+            return Name;
+        }
+        public Attendance GetAttendance(int i)
+        {
+            return AttendanceDays[i];
         }
     }
 }
