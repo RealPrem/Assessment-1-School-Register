@@ -32,7 +32,7 @@ namespace Assessment_1_School_Register
                 {
                     break;
                 }
-                Console.WriteLine("{0,3} {1,5} {2,35}", "Student", Students[i].GetName(), "P - Present, A - Absent, L - Late");
+                Console.WriteLine("{0,3} {1,5} {2,35}", "Student:", Students[i].GetName(), "P - Present, A - Absent, L - Late");
                 string AttendanceStatus = Console.ReadLine();
                 Students[i].AddAttendance(Date,AttendanceStatus);
             }
@@ -40,19 +40,50 @@ namespace Assessment_1_School_Register
         }
         public void PrintRegister(DateTime Date)
         {
+            Console.WriteLine("{0,29} {1,16} {2,27}" , "NAME", "DoB", "AttendanceStatus");
             for (int i = 0; i < Students.Length; i += 1)
             {
                 if (Students[i] == null)
                 {
                     break;
                 }
-                Console.WriteLine(Date.ToString("dd/MM/yyyy") + ": " +  Students[i].WasInSchool(Date));
+                Console.WriteLine("{0,3} {1,20} {2,20} {3,15}", "Student:", Students[i].GetName(), Students[i].GetDoB().ToString("dd/MM/yyyy"),
+                    Students[i].WasInSchool(Date));
             }
         }
-        public Student GetStudent(int Index)
+        public void PrintRegister(DateTime Date,string Name)
         {
-            return Students[Index];
+            for (int i = 0; i < Students.Length; i += 1)
+            {
+                if (Students[i] == null)
+                {
+                    break;
+                }
+                if (Students[i].GetName() == Name)
+                {
+                    Console.WriteLine("Student: " + Students[i].GetName());
+                    Students[i].GetAttendance(Date);
+                }
+            }
         }
-
+        public Student GetStudent(string Name)
+        {
+            for (int i = 0; i < Students.Length; i += 1)
+            {
+                if (Students[i] == null)
+                {
+                    break;
+                }
+                if (Students[i].GetName() == Name)
+                {
+                    return Students[i];
+                }
+            }
+            return null;
+        }
+        public string GetFormName()
+        {
+            return NameOfForm;
+        }
     }
 }

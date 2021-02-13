@@ -81,9 +81,34 @@ namespace Assessment_1_School_Register
         {
             return Name;
         }
-        public Attendance GetAttendance(int i)
+
+        public void GetAttendance(DateTime Date)
         {
-            return AttendanceDays[i];
+            bool Found = false;
+            for (int i = 0; i < AttendanceDays.Length; i += 1)
+            {
+                if (AttendanceDays[i] == null)
+                {
+                    break;
+                }
+                if (AttendanceDays[i].GetDate() == Date)
+                {
+                    Console.WriteLine("{0,3} {1,5}",Date.ToString("dd/MM/yyyy"), AttendanceDays[i].GetAttendanceStatus());
+                    Found = true;
+                }
+            }
+            if (Found ==  false)
+            {
+                Console.WriteLine("Date Not Found");
+            }
+        }
+        public string GetGender()
+        {
+            return Gender;
+        }
+        public DateTime GetDoB()
+        {
+            return DoB;
         }
     }
 }
