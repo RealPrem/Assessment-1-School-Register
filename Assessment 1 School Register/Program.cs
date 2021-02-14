@@ -10,7 +10,6 @@ namespace Assessment_1_School_Register
             YEAR12.AddStudent("Prem", DateTime.Parse("17/06/2004"), "M");
             YEAR12.AddStudent("NotPrem", DateTime.Parse("20/02/2004"), "M");
 
-            
             SchoolMenu(YEAR12);
         }
         static public void SchoolMenu(FormGroup YEAR12)
