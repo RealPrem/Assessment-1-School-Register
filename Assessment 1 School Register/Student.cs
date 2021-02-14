@@ -46,7 +46,7 @@ namespace Assessment_1_School_Register
                     return AttendanceDays[i].GetAttendanceStatus();
                 }
             }
-            return ("Attendance at Date " + Date + " Not Found");
+            return ("Attendance at Date " + Date.ToString("dd/MM/yyyy") + " Not Found");
         }
         public int GetTotalDays(string Status)
         {
@@ -57,11 +57,22 @@ namespace Assessment_1_School_Register
                 {
                     break;
                 }
-                if (AttendanceDays[i].GetAttendanceStatus() == Status)
+                if (Status == "P")
                 {
-                    Total += 1;
+                    if (AttendanceDays[i].GetAttendanceStatus() == Status || AttendanceDays[i].GetAttendanceStatus() == "L")
+                    {
+                        Total += 1;
+                    }
+                }
+                else
+                {
+                    if (AttendanceDays[i].GetAttendanceStatus() == Status)
+                    {
+                        Total += 1;
+                    }
                 }
             }
+            //string TotalString = Total.ToString();
             return Total;
         }
         public int GetTotalLateHours()

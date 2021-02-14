@@ -16,16 +16,17 @@ namespace Assessment_1_School_Register
         static public void SchoolMenu(FormGroup YEAR12)
         {
             int OptionNumber;
-            bool Exit = false;
+            string UserInput = "";
 
-            while (Exit == false)
+            while (UserInput != "Exit")
             {
                 Console.WriteLine("Press 1 to take the Register");
                 Console.WriteLine("Press 2 to print the Register");
                 Console.WriteLine("Press 3 to add students");
                 Console.WriteLine("Press 4 to get a certain student's Details");
                 Console.WriteLine("Press 5 to get the most Present,Late or Absent of a student");
-                string UserInput = Console.ReadLine();
+                Console.WriteLine("Press 6 to get a chart of all Status days");
+                UserInput = Console.ReadLine();
 
                 if (int.TryParse(UserInput, out OptionNumber))
                 {
@@ -41,6 +42,30 @@ namespace Assessment_1_School_Register
                     {
                         AddStudent(YEAR12);
                     }
+                    else if (OptionNumber == 4)
+                    {
+                        GetStudentDetails(YEAR12);
+                    }
+                    else if (OptionNumber == 5)
+                    {
+                        GetMostStatus(YEAR12);
+                    }
+                    else if (OptionNumber == 6)
+                    {
+                        GetStatusChart(YEAR12);
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Enter a valid option pls");
+                        Clear();
+                    }
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Enter a valid option pls");
+                    Clear();
                 }
             }
         }
@@ -111,6 +136,17 @@ namespace Assessment_1_School_Register
             Clear();
 
         }
+        static public void GetStudentDetails(FormGroup YEAR12)
+        {
+            string Name;
+
+            Console.Clear();
+
+            Console.WriteLine("Enter Student's Name");
+            Name = Console.ReadLine();
+            YEAR12.GetStudentDetails(Name);
+            Clear();
+        }
         static public void Clear()
         {
             int DelayTime = 2000;
@@ -126,6 +162,30 @@ namespace Assessment_1_School_Register
                     break;
                 }
             }
+        }
+        static public void GetMostStatus(FormGroup YEAR12)
+        {
+            string Status;
+
+            Console.Clear();
+
+            Console.WriteLine("P - Present, A - Absent, L - Late");
+            Status = Console.ReadLine();
+            YEAR12.GetMostStudent(Status);
+            Clear();
+        }
+        static public void GetStatusChart(FormGroup YEAR12)
+        {
+            string Status;
+
+            Console.Clear();
+
+            Console.WriteLine("DRAW STATUS CHART");
+            Console.WriteLine("P - Present, A - Absent, L - Late");
+            Status = Console.ReadLine();
+            YEAR12.GetStudentsStatusChart(Status);
+            Clear();
+
         }
     }
 }
